@@ -1,9 +1,8 @@
 export function generateEmbedCode(config) {
     const { color, textureUrl, autoRotate, backgroundAlpha } = config;
 
-    // Note regarding textureUrl: In a real app, this should be an uploaded URL (S3/Cloudinary).
-    // For this LOCAL demo, blob URLs won't work in a separate window/user's site.
-    // We will warn the user or use a placeholder if it's a blob.
+    // textureUrl might be a base64 string (embedded) or a remote URL.
+    // If it's a blob URL that wasn't converted, we fallback to a placeholder because blobs won't work externally.
 
     const isBlob = textureUrl?.startsWith('blob:');
     const safeTexture = isBlob ? 'YOUR_IMAGE_URL_HERE' : (textureUrl || 'https://placehold.co/1080x1920/png?text=Screen');

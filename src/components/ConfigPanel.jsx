@@ -26,10 +26,29 @@ export default function ConfigPanel({ config, setConfig, onExportImage, onRecord
         }
     };
 
-    const generateCode = () => {
-        const code = generateEmbedCode(config);
+    const generateCode = async () => {
+        let finalConfig = { ...config };
+
+        // Convert blob URL to base64 if present
+        if (config.textureUrl && config.textureUrl.startsWith('blob:')) {
+            try {
+                const response = await fetch(config.textureUrl);
+                const blob = await response.blob();
+                const base64 = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.readAsDataURL(blob);
+                });
+                finalConfig.textureUrl = base64;
+            } catch (e) {
+                console.error('Failed to convert image to base64', e);
+                // Fallback to original behavior (placeholder will be used)
+            }
+        }
+
+        const code = generateEmbedCode(finalConfig);
         navigator.clipboard.writeText(code);
-        alert('Vanilla Three.js Standalone Code copied to clipboard! (Note: Blob URLs for images wont work externally)');
+        alert('Vanilla Three.js Standalone Code copied to clipboard! Image has been embedded.');
     };
 
     return (
