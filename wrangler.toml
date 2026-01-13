@@ -1,0 +1,9 @@
+name = "makemock"
+compatibility_date = "2024-04-03"
+
+[site]
+bucket = "./dist"
+
+[routes]
+pattern = "makemock.williamfinken.com"
+custom_domain = true

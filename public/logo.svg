@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Phone Device -->
+  <rect x="32" y="22" width="36" height="56" rx="4" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+  
+  <!-- Code Brackets -->
+  <path d="M 45 44 L 38 50 L 45 56" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 55 44 L 62 50 L 55 56" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Speaker/Top Detail -->
+  <line x1="46" y1="28" x2="54" y2="28" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" />
+</svg>
